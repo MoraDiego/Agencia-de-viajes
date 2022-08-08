@@ -35,10 +35,25 @@ int main(int argc, char** argv) {
 						cout<<"Ingrese su documento de identidad"<<endl;
 						cin>>doc;
 						user.setNumeroDocumento(doc);
-						cout<<"Seleccione su sexo"<<endl;
-						cout<<"1.Hombre"<<endl;
-						cout<<"2.Mujer"<<endl;
+						while(true){
+							cout<<"Seleccione su sexo"<<endl;
+							cout<<"1.Hombre"<<endl;
+							cout<<"2.Mujer"<<endl;
+							cin>>doc;
+							if(doc==1){
+								user.setSexo(false);
+								break;
+							}else{
+								if(doc==2){
+									user.setSexo(true);
+									break;
+								}else{
+									cout<<"Ingrese una opcion valida"<<endl;
+								}
+							}
+						}
 						gestor=reg.registrarUsuario(gestor, user);
+						cout<<"si";
 						cout<<gestor.getUsuario(0).getNombre()<<" "<<gestor.getUsuario(0).getApellido()<<" "<<gestor.getUsuario(0).getNumeroDocumento()<<" "<<endl;
 						break;
 					}else{

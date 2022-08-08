@@ -9,7 +9,7 @@ class Registrador{
 		
 	}
 	GestorDatos registrarUsuario(GestorDatos gestor, Usuario user){
-		gestor.setListaUsuarios(gestor.getListaUsuarios().insertar_final(user));
+		gestor.agregarUsuario(user);
 		return gestor;
 	}
 	GestorDatos registrarAerolinea(GestorDatos gestor, Aerolinea user){
