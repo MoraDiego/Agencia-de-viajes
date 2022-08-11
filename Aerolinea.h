@@ -29,5 +29,8 @@ class Aerolinea{
 	int getNCuentaBancaria(){
 		return this->nCuentaBancaria;
 	}
+	string getNombre(){
+		return this->nombre;
+	}
 };
 #endif

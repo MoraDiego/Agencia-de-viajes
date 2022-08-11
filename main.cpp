@@ -123,7 +123,46 @@ int main(int argc, char** argv) {
 					}
 				}
 				break;
-			case 2:
+			case 2:		
+				while(true){
+					int ndoc;
+					cout<<"Desea ingresar como: "<<endl;
+					cout<<"1.Usuario"<<endl;
+					cout<<"2.Aerolinea"<<endl;
+					cin>>ndoc;
+					if(ndoc==1){
+						cout<<"Ingrese su numero de documento: ";
+						cin>>ndoc;
+						Usuario user=gestor.busquedaBinUser(ndoc,0,gestor.getListaUsuarios().getTam()-1);
+						if(user.getNumeroDocumento()==ndoc){
+							cout<<"Bienvenido "<<user.getNombre()<<endl;
+							cout<<"Que informacion desea consultar?"<<endl;
+							cout<<"1.Lista de aerolineas"<<endl;
+							cout<<"2.Lista de vuelos"<<endl;
+							break;
+						}else{
+							cout<<"NO EXISTE EL USUARIO, INTENTELO DE NUEVO"<<endl;
+						}
+					}else{
+						if(ndoc==2){
+							cout<<"Ingrese su numero de cuenta bancaria: ";
+							cin>>ndoc;
+							Aerolinea user=gestor.busquedaBinAero(ndoc,0,gestor.getListaUsuarios().getTam()-1);
+							if(user.getNCuentaBancaria()==ndoc){
+								cout<<"Bienvenido "<<user.getNombre()<<endl;
+								cout<<"Que informacion desea consultar?"<<endl;
+								cout<<"1.Lista de usuarios"<<endl;
+								cout<<"2.Lista de vuelos planeados"<<endl;
+								break;
+							}else{
+								cout<<"NO EXISTE LA AEROLINEA, INTENTELO DE NUEVO"<<endl;
+							}
+							break;
+						}else{
+							cout<<"Ingrese una opcion valida"<<endl;
+						}
+					}
+				}
 				break;
 			case 3:
 			ejecutar=false;

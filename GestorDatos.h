@@ -51,6 +51,38 @@ class GestorDatos{
 			this->listaAerolineas.reemplazar(aux,min);			
 		}
 	}
+	Usuario busquedaBinUser(int ndoc, int lo,int hi){
+		Usuario user;
+		while(lo<=hi){
+			int N=lo + (hi - lo) / 2;
+			user=this->listaUsuarios.buscar(N);
+			if(user.getNumeroDocumento()==ndoc){
+				return user;
+			}
+			if(user.getNumeroDocumento()<ndoc){
+				lo = N + 1;
+			}else{
+				hi = N - 1;
+			}
+		}
+		return user;
+	}
+	Aerolinea busquedaBinAero(int ndoc, int lo,int hi){
+		Aerolinea user;
+		while(lo<=hi){
+			int N=lo + (hi - lo) / 2;
+			user=this->listaAerolineas.buscar(N);
+			if(user.getNCuentaBancaria()==ndoc){
+				return user;
+			}
+			if(user.getNCuentaBancaria()<ndoc){
+				lo = N + 1;
+			}else{
+				hi = N - 1;
+			}
+		}
+		return user;
+	}
 	void setListaUsuarios(Lista<Usuario> lista){
 		this->listaUsuarios=lista;
 	}
