@@ -103,6 +103,7 @@ int main(int argc, char** argv) {
 							if(op==3){
 								break;
 							}else{
+								//Consultar lista de usuarios ordenada
 								for(int i=0;i<gestor.getListaUsuarios().getTam();i++){
 									cout<<"Lista de usuarios"<<endl;
 									cout<<"Nombre: "<<gestor.getUsuario(i).getNombre()<<endl;

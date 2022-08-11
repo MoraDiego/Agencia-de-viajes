@@ -15,7 +15,7 @@ class Aerolinea{
 		this->nombre=nom;
 	}
 	void setNCuentaBancaria(int n){
-		this->nCuentaBancaria;
+		this->nCuentaBancaria=n;
 	}
 	void setAvionesDisponibles(int nAviones){
 		this->avionesDisponibles=nAviones;
@@ -25,6 +25,9 @@ class Aerolinea{
 	}
 	Lista<VueloPlaneado> getItinerario(){
 		return this->itinerario;
+	}
+	int getNCuentaBancaria(){
+		return this->nCuentaBancaria;
 	}
 };
 #endif

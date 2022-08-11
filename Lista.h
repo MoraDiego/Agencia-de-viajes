@@ -137,5 +137,12 @@ public:
 	int getTam(){
 		return this->tam;
 	}
+	void reemplazar(T remp, int indice){
+		nodo<T> *aux=cab;
+		for(int i=0;i<indice;i++){
+			aux=aux->sig;
+		}
+		aux->dato=remp;
+	}
 };
 #endif
