@@ -134,5 +134,8 @@ public:
 		}
 		cout << endl;
 	}
+	int getTam(){
+		return this->tam;
+	}
 };
 #endif

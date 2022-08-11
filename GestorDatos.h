@@ -24,5 +24,8 @@ class GestorDatos{
 	Usuario getUsuario(int indice){
 		return this->listaUsuarios.buscar(indice);
 	}
+	Aerolinea getAerolinea(int indice){
+		return this->listaAerolineas.buscar(indice);
+	}
 };
 #endif

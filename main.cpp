@@ -22,10 +22,10 @@ int main(int argc, char** argv) {
 					cout<<"2.Aerolinea"<<endl;
 					cout<<"3.Volver"<<endl;
 					cin>>op;
+					string n;
+					int doc;
 					if(op==1){
 						Usuario user;
-						string n;
-						int doc;
 						cout<<"Ingrese su nombre"<<endl;
 						cin>>n;
 						user.setNombre(n);
@@ -35,6 +35,9 @@ int main(int argc, char** argv) {
 						cout<<"Ingrese su documento de identidad"<<endl;
 						cin>>doc;
 						user.setNumeroDocumento(doc);
+						cout<<"Ingrese su edad"<<endl;
+						cin>>doc;
+						user.setEdad(doc);
 						while(true){
 							cout<<"Seleccione su sexo"<<endl;
 							cout<<"1.Hombre"<<endl;
@@ -52,19 +55,67 @@ int main(int argc, char** argv) {
 								}
 							}
 						}
+						
 						gestor=reg.registrarUsuario(gestor, user);
-						cout<<"si";
-						cout<<gestor.getUsuario(0).getNombre()<<" "<<gestor.getUsuario(0).getApellido()<<" "<<gestor.getUsuario(0).getNumeroDocumento()<<" "<<endl;
 						break;
 					}else{
 						if(op==2){
-							cout<<2;
+							int nVuelos;
+							Aerolinea aero;
+							cout<<"Ingrese el nombre de la Aerolinea"<<endl;
+							cin>>n;
+							aero.setNombre(n);
+							cout<<"Ingrese el numero de su cuenta de banco"<<endl;
+							cin>>doc;							
+							aero.setNCuentaBancaria(doc);
+							cout<<"Ingrese el numero de aviones disponibles"<<endl;
+							cin>>doc;
+							aero.setAvionesDisponibles(doc);
+							cout<<"Para registrar su aerolinea debe ingresar el plan de trayectos semanales"<<endl;
+							cout<<"Cuantos vuelos desea planear?"<<endl;
+							cin>>nVuelos;
+							for(int i=0;i<nVuelos;i++){
+								VueloPlaneado vuelo;
+								cout<<"Vuelo "<<i+1<<endl;
+								cout<<"Ingrese el origen: ";
+								cin>>n;
+								vuelo.setOrigen(n);
+								cout<<"Ingrese el destino: ";
+								cin>>n;
+								vuelo.setDestino(n);
+								cout<<"Ingrese el numero de sillas del vuelo: ";
+								cin>>doc;
+								vuelo.setNumSillas(doc);
+								cout<<"Ingrese la hora de inicio del vuelo(Hora militar): ";
+								cin>>doc;
+								vuelo.setHoraInicio(doc);
+								cout<<"Ingrese la hora de fin del vuelo(Hora militar): ";
+								cin>>doc;
+								vuelo.setHoraFin(doc);
+								cout<<"Ingrese el codigo del vuelo: ";
+								cin>>n;
+								vuelo.setCodigoVuelo(n);
+								aero.getItinerario().insertar_final(vuelo);
+							}
+							gestor=reg.registrarAerolinea(gestor, aero);
 							break;
 						}else{
 							if(op==3){
-								cout<<3;
 								break;
 							}else{
+								for(int i=0;i<gestor.getListaUsuarios().getTam();i++){
+									cout<<"Lista de usuarios"<<endl;
+									cout<<"Nombre: "<<gestor.getUsuario(i).getNombre()<<endl;
+									cout<<"Apellido: "<<gestor.getUsuario(i).getApellido()<<endl;
+									cout<<"Edad: "<<gestor.getUsuario(i).getEdad()<<endl;
+									cout<<"Sexo ";
+									if(gestor.getUsuario(i).getSexo()){
+										cout<<"Mujer";	
+									}else{
+										cout<<"Hombre";
+									}
+									cout<<endl<<"Documento "<<gestor.getUsuario(i).getNumeroDocumento()<<endl;
+								}
 								cout<<"Ingrese una opcion valida"<<endl;
 							}
 						}
