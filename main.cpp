@@ -61,6 +61,7 @@ int main(int argc, char** argv) {
 					}else{
 						if(op==2){
 							int nVuelos;
+							int nVuelosE;
 							Aerolinea aero;
 							cout<<"Ingrese el nombre de la Aerolinea"<<endl;
 							cin>>n;
@@ -86,16 +87,31 @@ int main(int argc, char** argv) {
 								cout<<"Ingrese el numero de sillas del vuelo: ";
 								cin>>doc;
 								vuelo.setNumSillas(doc);
-								cout<<"Ingrese la hora de inicio del vuelo(Hora militar): ";
-								cin>>doc;
-								vuelo.setHoraInicio(doc);
-								cout<<"Ingrese la hora de fin del vuelo(Hora militar): ";
-								cin>>doc;
-								vuelo.setHoraFin(doc);
 								cout<<"Ingrese el codigo del vuelo: ";
 								cin>>n;
 								vuelo.setCodigoVuelo(n);
 								aero.getItinerario().insertar_final(vuelo);
+								cout<<"¿Cuantos vuelos especificos desea registrar?: ";
+								cin>>nVuelosE;
+								for(int j=0;j<nVuelosE;j++){
+									VueloEspecifico vueloE;
+									cout<<"Vuelo especifico 1"<<endl;
+									cout<<"Digite el dia (nombre del dia) en el que se encuentra disponible el Vuelo Especifico: ";
+									cin>>n;
+									vueloE.setdia(n);
+									cout<<"Digite el numero de sillas disponibles: ";
+									cin>>doc;
+									vueloE.setnSillasDisp(doc);
+									cout<<"Digite la hora de Inicio del viaje (hora militar): ";
+									cin>>doc;
+									vueloE.setHoraInicio(doc);
+									cout<<"Digite la hora de Fin del viaje (hora militar): ";
+									cin>>doc;
+									vueloE.setHoraFin(doc);
+									cout<<"Digite el precio del vuelo: ";
+									cin>>doc;
+									vueloE.setprecio(doc);
+								}
 							}
 							gestor=reg.registrarAerolinea(gestor, aero);
 							break;

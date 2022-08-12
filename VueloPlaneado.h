@@ -1,5 +1,6 @@
 #ifndef VUELOPLANEADO_H 
 #define VUELOPLANEADO_H 
+#include "VueloEspecifico.h"
 
 using namespace std;
 
@@ -8,8 +9,7 @@ class VueloPlaneado{
 	string origen;
 	string destino;
 	int numSillas;
-	int horaInicio;
-	int horaFin;
+	Lista<VueloEspecifico> vEspecificos;
 	public:
 	VueloPlaneado(){
 		
@@ -25,12 +25,6 @@ class VueloPlaneado{
 	}
 	void setNumSillas(int nSillas){
 		this->numSillas=nSillas;
-	}
-	void setHoraInicio(int horaInicio){
-		this->horaInicio=horaInicio;
-	}
-	void setHoraFin(int horaFin){
-		this->horaFin=horaFin;
 	}
 };
 #endif
