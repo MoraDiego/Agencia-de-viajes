@@ -7,7 +7,7 @@ struct silla{
 	int num;
 	bool ocupada;
 };
-class VueloEspecifico: public VueloPlaneado {
+class VueloEspecifico{
 	int nSillasDisp;
 	string dia;
 	int horaInicio;

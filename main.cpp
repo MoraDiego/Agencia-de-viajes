@@ -1,12 +1,14 @@
 #include <iostream>
 #include "Registrador.h"
 #include "GestorDatos.h"
+#include "GestorArchivos.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 int main(int argc, char** argv) {
 	int op=3;
 	bool ejecutar=true;
-	GestorDatos gestor;
+	GestorArchivos archivos;
+	GestorDatos gestor=archivos.leerArchivos();
 	Registrador reg;
 	while(ejecutar){
 		cout<<"Que desea hacer?"<<endl;
@@ -55,8 +57,8 @@ int main(int argc, char** argv) {
 								}
 							}
 						}
-						
 						gestor=reg.registrarUsuario(gestor, user);
+						archivos.crearArchivoUsuarios(gestor);
 						break;
 					}else{
 						if(op==2){
