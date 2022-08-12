@@ -1,14 +1,12 @@
 #include <iostream>
 #include "Registrador.h"
 #include "GestorDatos.h"
-#include "GestorArchivos.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 int main(int argc, char** argv) {
 	int op=3;
 	bool ejecutar=true;
-	GestorArchivos archivos;
-	GestorDatos gestor=archivos.leerArchivos();
+	GestorDatos gestor;
 	Registrador reg;
 	while(ejecutar){
 		cout<<"Que desea hacer?"<<endl;
@@ -57,8 +55,8 @@ int main(int argc, char** argv) {
 								}
 							}
 						}
+						
 						gestor=reg.registrarUsuario(gestor, user);
-						archivos.crearArchivoUsuarios(gestor);
 						break;
 					}else{
 						if(op==2){
@@ -86,24 +84,47 @@ int main(int argc, char** argv) {
 								cout<<"Ingrese el destino: ";
 								cin>>n;
 								vuelo.setDestino(n);
-								cout<<"Ingrese el numero de sillas del vuelo: ";
-								cin>>doc;
-								vuelo.setNumSillas(doc);
 								cout<<"Ingrese el codigo del vuelo: ";
 								cin>>n;
 								vuelo.setCodigoVuelo(n);
-								aero.getItinerario().insertar_final(vuelo);
 								cout<<"¿Cuantos vuelos especificos desea registrar?: ";
 								cin>>nVuelosE;
-								for(int j=0;j<nVuelosE;j++){
+								for(int j=1;j<=nVuelosE;j++){
 									VueloEspecifico vueloE;
-									cout<<"Vuelo especifico 1"<<endl;
+									cout<<"Vuelo especifico "<<j<<endl;
 									cout<<"Digite el dia (nombre del dia) en el que se encuentra disponible el Vuelo Especifico: ";
 									cin>>n;
 									vueloE.setdia(n);
+									bool continuar = true;
+									while(continuar == true){
+										cout<<"Digite el dia en que sale el vuelo: "<<endl;
+										cin>>doc;
+										vueloE.f.dia=doc;
+										cout<<"Digite el mes en que sale el vuelo: "<<endl;
+										cin>>doc;
+										vueloE.f.mes=doc;
+										cout<<"Digite el año en que sale el vuelo: "<<endl;
+										cin>>doc;
+										vueloE.f.anio=doc;
+										cout<<"Desea ingresar otra fecha? 1:Si 2.No"<<endl;
+										cin>>doc;
+										vueloE.f.dia=doc;
+										vueloE.getFechas().insertar_final(vueloE.f);
+										if(doc==1){
+											continuar=true;
+										}else{
+											continuar=false;
+										}
+										
+									}
 									cout<<"Digite el numero de sillas disponibles: ";
 									cin>>doc;
 									vueloE.setnSillasDisp(doc);
+									for(int k=1; k<=doc; k++){
+										vueloE.s.num=k;
+										vueloE.s.ocupada = false;
+										vueloE.getSillas().insertar_final(vueloE.s);
+									}
 									cout<<"Digite la hora de Inicio del viaje (hora militar): ";
 									cin>>doc;
 									vueloE.setHoraInicio(doc);
@@ -113,7 +134,9 @@ int main(int argc, char** argv) {
 									cout<<"Digite el precio del vuelo: ";
 									cin>>doc;
 									vueloE.setprecio(doc);
+									vuelo.getvEspecificos().insertar_final(vueloE);
 								}
+								aero.getItinerario().insertar_final(vuelo);
 							}
 							gestor=reg.registrarAerolinea(gestor, aero);
 							break;

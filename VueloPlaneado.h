@@ -8,7 +8,6 @@ class VueloPlaneado{
 	string codigoVuelo;
 	string origen;
 	string destino;
-	int numSillas;
 	Lista<VueloEspecifico> vEspecificos;
 	public:
 	VueloPlaneado(){
@@ -23,8 +22,12 @@ class VueloPlaneado{
 	void setDestino(string destino){
 		this->destino=destino;
 	}
-	void setNumSillas(int nSillas){
-		this->numSillas=nSillas;
+	void setvEspecificos(Lista<VueloEspecifico> vEspecificos){
+		this->vEspecificos=vEspecificos;
+	}
+	
+	Lista<VueloEspecifico> getvEspecificos(){
+		return this->vEspecificos;
 	}
 };
 #endif
