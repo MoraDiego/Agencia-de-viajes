@@ -89,6 +89,9 @@ class GestorDatos{
 	Lista<Usuario> getListaUsuarios(){
 		return this->listaUsuarios;
 	}
+	Lista<Aerolinea> getListaAerolineas(){
+		return this->listaAerolineas;
+	}
 	void agregarUsuario(Usuario user){
 		this->listaUsuarios.insertar_final(user);
 		this->ordernarListaUsers();

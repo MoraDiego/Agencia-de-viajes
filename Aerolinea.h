@@ -32,5 +32,8 @@ class Aerolinea{
 	string getNombre(){
 		return this->nombre;
 	}
+	int getAvionesDisponibles(){
+		return this->avionesDisponibles;
+	}
 };
 #endif

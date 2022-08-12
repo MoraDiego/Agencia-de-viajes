@@ -91,6 +91,7 @@ int main(int argc, char** argv) {
 								vuelo.setCodigoVuelo(n);
 								cout<<"¿Cuantos vuelos especificos desea registrar?: ";
 								cin>>nVuelosE;
+								Lista<VueloEspecifico> vuelosE=vuelo.getvEspecificos();
 								for(int j=1;j<=nVuelosE;j++){
 									VueloEspecifico vueloE;
 									cout<<"Vuelo especifico "<<j<<endl;
@@ -136,11 +137,16 @@ int main(int argc, char** argv) {
 									cout<<"Digite el precio del vuelo: ";
 									cin>>doc;
 									vueloE.setprecio(doc);
-									vuelo.getvEspecificos().insertar_final(vueloE);
+									vuelosE.insertar_final(vueloE);
+									vuelo.setvEspecificos(vuelosE);
 								}
-								aero.getItinerario().insertar_final(vuelo);
+								Lista<VueloPlaneado> itinerario=aero.getItinerario();
+								itinerario.insertar_final(vuelo);
+								aero.setItinerario(itinerario);
 							}
 							gestor=reg.registrarAerolinea(gestor, aero);
+							cout<<aero.getItinerario().getTam()<<endl;
+							archivos.crearArchivosAerolinea(gestor);
 							break;
 						}else{
 							if(op==3){

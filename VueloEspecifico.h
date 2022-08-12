@@ -30,6 +30,21 @@ class VueloEspecifico {
 	VueloEspecifico(){
 		
 	}
+	int getPrecio(){
+		return this->precio;
+	}
+	int getHoraFin(){
+		return this->horaFin;
+	}
+	int getHoraInicio(){
+		return this->horaInicio;
+	}
+	string getDia(){
+		return this->dia;
+	}
+	Lista<fecha> getFechas(){
+		return this->fechas;
+	}
     void setnSillasDisp(int nSillasDisp){
 		this->nSillasDisp = nSillasDisp;
 	}
@@ -60,10 +75,5 @@ class VueloEspecifico {
 	void setFecha(Lista<fecha> fechas){
 		this->fechas=fechas;
 	}
-	
-	Lista<fecha> getFechas(){
-		return this->fechas;
-	}
-	
 };
 #endif

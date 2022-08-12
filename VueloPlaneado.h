@@ -25,7 +25,15 @@ class VueloPlaneado{
 	void setvEspecificos(Lista<VueloEspecifico> vEspecificos){
 		this->vEspecificos=vEspecificos;
 	}
-	
+	string getDestino(){
+		return this->destino;
+	}
+	string getOrigen(){
+		return this->origen;
+	}
+	string getCodigoVuelo(){
+		return this->codigoVuelo;
+	}
 	Lista<VueloEspecifico> getvEspecificos(){
 		return this->vEspecificos;
 	}

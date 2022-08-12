@@ -28,18 +28,40 @@ class GestorArchivos{
 	        	<< "\n";
 		}
 	}
-	void crearArchivoAerolineas(GestorDatos gestor){
+	void crearArchivosAerolinea(GestorDatos gestor){
 		this->datos=gestor;
 		fstream fout;
-		fout.open("./Usuarios.csv", ios::out);
-		for(int i=0;i<datos.getListaUsuarios().getTam();i++){
-			Usuario user=datos.getListaUsuarios().buscar(i);
+		fstream fout1;
+		fstream fout2;
+		fout.open("./Aerolineas.csv", ios::out);
+		fout1.open("./VuelosPlaneados.csv", ios::out);
+		fout2.open("./VuelosEspecificos.csv", ios::out);
+		for(int i=0;i<datos.getListaAerolineas().getTam();i++){
+			Aerolinea user=datos.getListaAerolineas().buscar(i);
 			fout << user.getNombre() << ","
-           		<< user.getApellido() << ","
-           		<< user.getNumeroDocumento() << ","
-           		<< user.getEdad()<<","
-        		<< user.getSexo() << ","
+				<<user.getAvionesDisponibles()<<","
+           		<< user.getNCuentaBancaria() << ","
 	        	<< "\n";
+	        for(int j=0;j<user.getItinerario().getTam();j++){
+	        	VueloPlaneado vueloP=user.getItinerario().buscar(j);
+	        	fout1 << user.getNombre() << ","
+	        	<<vueloP.getCodigoVuelo()<< ","
+				<<vueloP.getOrigen()<<","
+           		<<vueloP.getDestino()<< ","
+	        	<< "\n";
+	        	for(int k=0;k<vueloP.getvEspecificos().getTam();k++){
+	        		VueloEspecifico vueloE=vueloP.getvEspecificos().buscar(k);
+	        		fout2<<vueloP.getCodigoVuelo()<< ","
+					<<vueloE.getDia()<<","
+	           		<<vueloE.getHoraInicio()<< ","
+	           		<<vueloE.getHoraFin()<< ","
+	           		<<vueloE.getHoraInicio()<< ","
+	           		<<vueloE.getHoraFin()<< ","
+		        	<<vueloE.getPrecio()<< ","
+		        	<<vueloE.getHoraFin()<< ","
+					<< "\n";
+				}
+			}
 		}
 	}
 	GestorDatos leerArchivos(){
